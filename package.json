@@ -2,9 +2,9 @@
     "name": "shovelsite",
     "version": "1.0.0",
     "description": "",
-    "main": "server.js",
+    "main": "app.js",
     "scripts": {
-        "start": "sudo node server.js"
+        "start": "sudo NODE_PATH=routes PORT=80 node app.js"
     },
     "repository": {
         "type": "git",

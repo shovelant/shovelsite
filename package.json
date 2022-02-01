@@ -1,0 +1,23 @@
+{
+    "name": "shovelsite",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "start": "sudo node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/shovelant/shovelsite.git"
+    },
+    "author": "",
+    "license": "UNLICENSED",
+    "bugs": {
+        "url": "https://github.com/shovelant/shovelsite/issues"
+    },
+    "homepage": "https://github.com/shovelant/shovelsite#readme",
+    "dependencies": {
+        "express": "^4.17.2",
+        "hbs": "^4.2.0"
+    }
+}

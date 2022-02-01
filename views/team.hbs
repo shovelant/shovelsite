@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Shovel Ant</title>
+        <title>The Team</title>
         <link rel="icon" href="img/favicon.ico">
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <h1>The Team</h1>
+        <div class="navbar">
+			<a href="/">&ltHome&gt</a>
+			<a href="/about">&ltAbout&gt</a>
+			<a class="active" href="/team">&ltThe Team&gt</a>
+            <a href="/contact">&ltContact&gt</a>
+		</div>
+        <h1>Meet the Team</h1>
         <ul>
             {{#each people}}
                 <li>{{this}}</li>
             {{/each}}
         </ul>
-        <a href="/">Return home</a> 
     </body>
 </html>

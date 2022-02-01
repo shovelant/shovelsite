@@ -1,3 +1,77 @@
 body {
-    background: linear-gradient(to left top, blue, red) fixed;
+    --black: rgb(40, 40, 40);
+    --black-intense: rgb(146, 131, 116);
+    --red: rgb(204, 36, 29);
+    --red-intense: rgb(251, 73, 52);
+    --green: rgb(152, 151, 26);
+    --green-intense: rgb(184, 187, 38);
+    --yellow: rgb(215, 153, 33);
+    --yellow-intense: rgb(250, 189, 47);
+    --blue: rgb(69, 133, 136);
+    --blue-intense: rgb(131, 165, 152);
+    --purple: rgb(177, 98, 134);
+    --purple-intense: rgb(211, 134, 155);
+    --teal: rgb(104, 157, 106);
+    --teal-intense: rgb(142, 192, 124);
+    --white: rgb(168, 153, 132);
+    --white-intense: rgb(235, 219, 178);
+
+    margin: 36px;
+    background: var(--black);
+    font-family: "Source Code Pro", monospace;
+    color: var(--white-intense);
+}
+
+h1 {
+    margin-bottom: 36px;
+    text-align: center;
+    font-size: 36px;
+    color: var(--red);
+}
+
+h2 {
+    margin-bottom: 36px;
+    text-align: center;
+    font-size: 18px;
+}
+
+h3 {
+    margin-bottom: 36px;
+    text-align: center;
+    font-size: 14px;
+}
+
+p {
+    margin-bottom: 36px;
+    font-size: 16px;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    margin-bottom: 36px;
+    border: 0;
+    border-top: 2px solid;
+}
+
+a:any-link {
+    text-decoration: none;
+    color: var(--teal);
+}
+
+a:any-link:hover, a.active {
+    color: var(--teal-intense);
+}
+
+ul {
+    display: table;
+    margin: 0px 32px;
+}
+
+li:hover {
+    color: var(--purple);
+}
+
+.navbar {
+    font-size: 18px;
 }

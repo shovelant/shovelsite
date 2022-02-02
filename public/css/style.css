@@ -54,7 +54,7 @@ hr {
     border-top: 2px solid;
 }
 
-a:any-link {
+a:any-link:not(.secret) {
     text-decoration: none;
     color: var(--teal);
 }
@@ -70,6 +70,15 @@ ul {
 
 li:hover {
     color: var(--purple);
+}
+
+canvas {
+    position: absolute;
+    top: 0px; 
+    left: 0px;
+    width: auto;
+    height: auto;
+    pointer-events: none;
 }
 
 .navbar {

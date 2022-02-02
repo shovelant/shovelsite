@@ -46,14 +46,6 @@ p {
     font-size: 16px;
 }
 
-hr {
-    display: block;
-    height: 1px;
-    margin-bottom: 36px;
-    border: 0;
-    border-top: 2px solid;
-}
-
 a:any-link:not(.secret) {
     text-decoration: none;
     color: var(--teal);
@@ -65,7 +57,7 @@ a:any-link:hover, a.active {
 
 ul {
     display: table;
-    margin: 0px 32px;
+    margin-bottom: 36px;
 }
 
 li:hover {
@@ -76,8 +68,6 @@ canvas {
     position: absolute;
     top: 0px; 
     left: 0px;
-    width: auto;
-    height: auto;
     pointer-events: none;
 }
 

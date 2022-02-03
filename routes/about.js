@@ -1,4 +1,4 @@
-var express = require('express')
+let express = require('express')
 app = module.exports = express()
 
 app.get('/about', function(req, res) {

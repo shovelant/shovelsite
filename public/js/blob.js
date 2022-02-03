@@ -1,14 +1,14 @@
-var clicked = false
-var x = 0
-var y = 0
-var z = 0
-var dx = 0.01
-var dy = 0.01
-var dz = 0.01
-var xBoundary = Math.random() * 4 + 1
-var yBoundary = Math.random() * 4 + 1
-var zBoundary = Math.random() * 4 + 1
-var rotation = 0
+let clicked = false
+let x = 0
+let y = 0
+let z = 0
+let dx = 0.01
+let dy = 0.01
+let dz = 0.01
+let xBoundary = Math.random() * 4 + 1
+let yBoundary = Math.random() * 4 + 1
+let zBoundary = Math.random() * 4 + 1
+let rotation = 0
 
 function blob() {
     if (clicked) { // Allow clicking the easter egg only once
@@ -16,7 +16,7 @@ function blob() {
     }
     clicked = true
 
-    var canvas = document.getElementById('canvas')
+    let canvas = document.getElementById('canvas')
     canvas.width = document.documentElement.clientWidth
     canvas.height = document.documentElement.clientHeight
     gl = canvas.getContext('experimental-webgl')
@@ -57,8 +57,8 @@ function blob() {
     }
 
     const texture = loadTexture(gl, 'img/blobfish.png')
-    var last = 0
     const buffers = initBuffers(gl)
+    let last = 0
     function render(time) {
         time *= 0.001
         drawScene(gl, programInfo, buffers, texture, time - last)
@@ -147,7 +147,7 @@ function updateVertices(vertices) { // Probably pretty inefficient
 }
 
 function getVertices(x, y, z) {
-    var vertices = [
+    let vertices = [
         -1, -1,  1, // Front
          1, -1,  1,
          1,  1,  1,
@@ -174,7 +174,7 @@ function getVertices(x, y, z) {
         -1,  1, -1,
     ]
 
-    for (var vertex = 0; vertex < 24; vertex++) {
+    for (let vertex = 0; vertex < 24; vertex++) {
         vertices[vertex * 3] += x
         vertices[vertex * 3 + 1] += y
         vertices[vertex * 3 + 2] += z

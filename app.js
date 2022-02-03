@@ -19,6 +19,11 @@ app.use(team)
 app.use(contact)
 app.use(wordant)
 
+app.get("*", (req,res) => { // Handle 404s
+    res.status(404)
+    res.render('404')
+})
+
 http.createServer(function (req, res) { // Redirect http to https
     res.writeHead(301, 'https://' + req.headers['host'] + req.url);
     res.end();

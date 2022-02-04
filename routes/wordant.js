@@ -1,6 +1,6 @@
 const express = require('express')
 app = module.exports = express()
 
-app.get('/about', function(req, res) {
-    res.render('about')
+app.get('/wordant', function(req, res) {
+    res.render('wordant')
 })

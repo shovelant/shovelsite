@@ -1,4 +1,4 @@
-let express = require('express')
+const express = require('express')
 app = module.exports = express()
 
 app.get('/contact', function(req, res) {

@@ -1,26 +1,15 @@
 const KEYBOARD_LAYOUT = [10, 9, 9]
-let words = new Set()
-let target = ''
+let words
+let target
 
 loadWords().then((response) => {
-    words = response
-    target = randWord()
-    if (words.has(target)) {
-        target = randWord()
-    }
+    words = new Set(response)
+    target = response[Math.floor(Math.random() * response.length)]
 })
 
 async function loadWords() {
-    const response = await fetch('txt/wordant.txt');
-    return new Set((await response.text()).split('\n'));
-}
-
-function randWord() {
-    let word = ''
-    for (let i = 0; i < 5; i++) {
-        word += String.fromCharCode(Math.random() * 26 + 97)
-    }
-    return word
+    const response = await fetch('txt/wordant.txt')
+    return (await response.text()).split('\n')
 }
 
 function key(letter) {
@@ -37,7 +26,7 @@ function enter() {
     const guess = guesses.children[guesses.children.length - 1]
     const submitted = guess.innerText
     if (!submitted.includes('_')) {
-        if (words.has(submitted)) {
+        if (!words.has(submitted)) {
             guess.classList.add('bad')
         } else {
             let status = []

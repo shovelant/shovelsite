@@ -7,6 +7,18 @@ loadWords().then((response) => {
     target = response[Math.floor(Math.random() * response.length)]
 })
 
+document.addEventListener('keyup', (event) => {
+    let keyPressed = event.key.toLowerCase()
+    console.log(keyPressed)
+    if (keyPressed == 'enter') {
+        enter()
+    } else if (keyPressed == 'backspace') {
+        back()
+    } else if (keyPressed.length == 1 && keyPressed.charCodeAt(0) >= 97 && keyPressed.charCodeAt(0) <= 122) {
+        key(keyPressed)
+    }
+})
+
 async function loadWords() {
     const response = await fetch('txt/wordant.txt')
     return (await response.text()).split('\n')

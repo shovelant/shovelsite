@@ -1,5 +1,8 @@
 const KEYBOARD_LAYOUT = [10, 9, 9]
-let won = false
+const SHIFT_CHANCE = 0.25
+let gameStatus = 0 // 0 for still playing, 1 for won, 2 for lost
+let guessNumber = 0
+let emojis = '' // The text you share with your friends, if you have any
 let words
 let target
 
@@ -25,9 +28,9 @@ async function loadWords() {
 }
 
 function enter() {
-    if (!won) {
+    if (gameStatus == 0) {
         const guesses = document.getElementById('guesses')
-        const guess = guesses.children[guesses.children.length - 1]
+        const guess = guesses.children[guessNumber]
         const submitted = guess.innerText
         if (!submitted.includes('_')) {
             if (!words.has(submitted)) {
@@ -54,22 +57,42 @@ function enter() {
                     }
                 }
                 guess.innerText = ''
-                won = true
+                gameStatus = 1
                 for (let i = 0; i < 5; i++) {
                     guess.innerHTML += `<span class="${status[i]}">${submitted[i]}</span>`
-                    if (status[i] != 'right') {
-                        won = false
+                    if (status[i] == 'right') {
+                        emojis += '🟩' // Green
+                    } else if (status[i] == 'contains') {
+                        gameStatus = 0
+                        emojis += '🟨' // Red
+                    } else {
+                        gameStatus = 0
+                        emojis += '⬛' // Black
                     }
                 }
-                if (!won) {
-                    newGuess = document.createElement('div')
-                    newGuess.className = 'guess'
-                    newGuess.innerText = '_____'
-                    document.getElementById('guesses').appendChild(newGuess)
-                    if (Math.random() < 0.25) {
+                emojis += '\n'
+                guessNumber++
+                if (gameStatus == 0 && guessNumber >= 10) {
+                    gameStatus = 2
+                }
+                if (gameStatus == 0) {
+                    if (Math.random() < SHIFT_CHANCE) {
                         target = shiftWord(target)
                     }
                     shuffleKeyboard()
+                } else {
+                    let endgame = document.getElementById('endgame')
+                    if (gameStatus == 1) {
+                        endgame.innerHTML = 'Nice! <span id="copy">&ltCopy to clipboard&gt</span>'
+                        let copy = document.getElementById('copy')
+                        copy.onclick = function() {
+                            let share = `Wordant ${guessNumber}/10\n\n` + emojis
+                            navigator.clipboard.writeText(share)
+                        }
+                    } else {
+                        endgame.innerText = `The answer was ${target}`
+                    }
+                    endgame.hidden = false
                 }
             }
         }
@@ -90,7 +113,7 @@ function shiftWord(word) { // Very lazy approach
 }
 
 function randomShift(word) {
-    const index = 4
+    const index = Math.floor(Math.random() * 5)
     let charCode = Math.floor(Math.random() * 25 + 97)
     if (word.charCodeAt(index) == charCode) {
         charCode = 122
@@ -123,9 +146,9 @@ function shuffleKeyboard() {
 }
 
 function back() {
-    if (!won) {
+    if (gameStatus == 0) {
         const guesses = document.getElementById('guesses')
-        const guess = guesses.children[guesses.children.length - 1]
+        const guess = guesses.children[guessNumber]
         let index = guess.innerText.indexOf('_')
         if (index != 0) {
             if (index == -1) {
@@ -138,9 +161,9 @@ function back() {
 }
 
 function key(letter) {
-    if (!won) {
+    if (gameStatus == 0) {
         const guesses = document.getElementById('guesses')
-        const guess = guesses.children[guesses.children.length - 1]
+        const guess = guesses.children[guessNumber]
         const index = guess.innerText.indexOf('_')
         if (index != -1) {
             guess.innerText = guess.innerText.slice(0, index) + letter.toLowerCase() + '_'.repeat(4 - index)

@@ -1,3 +1,17 @@
+#endgame {
+    text-align: center;
+    font-size: 24px;
+}
+
+#copy {
+    color: var(--teal);
+}
+
+#copy:hover {
+    color: var(--teal-intense);
+    cursor: pointer;
+}
+
 #keyboard {
     position: fixed;
     bottom: 36px;
@@ -6,9 +20,15 @@
     width: auto;
 }
 
+
 .guess {
+    margin: 24px;
     text-align: center;
     font-size: 24px;
+}
+
+.bad {
+    animation: shake 0.5s;
 }
 
 .right {
@@ -38,10 +58,6 @@
 .key:hover {
     color: var(--teal-intense);
     cursor: pointer;
-}
-
-.bad {
-    animation: shake 0.5s;
 }
   
 @keyframes shake {
